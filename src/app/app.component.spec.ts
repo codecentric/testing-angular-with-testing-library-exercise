@@ -3,6 +3,7 @@ import { render, screen, within } from '@testing-library/angular';
 import userEvent from '@testing-library/user-event';
 import { DoglistComponent } from './components/doglist/doglist.component';
 import { DogService } from './services/dog.service';
+import { AppRoutingModule } from './app-routing.module';
 
 describe('AppComponent', () => {
   const expectedDoggos: Dog[] = [
@@ -25,9 +26,11 @@ describe('AppComponent', () => {
   ];
 
   beforeEach(async () => {
-    await render(AppComponent, {
+    let renderResult = await render(AppComponent, {
       declarations: [DoglistComponent],
+      imports: [AppRoutingModule],
     });
+    await renderResult.navigate('');
   });
 
   it('shows the title Doggo-World', () => {
@@ -62,5 +65,13 @@ describe('AppComponent', () => {
 
     await userEvent.click(buttons[2]);
     screen.getByText('Bobo says "aroof!"');
+  });
+
+  it('shows a link that leads us to the newDog page', async () => {
+    const link = screen.getByRole('link', { name: 'Enter new dog' });
+
+    await userEvent.click(link);
+
+    expect(screen.getByText(/enter new dog/i)).toBeVisible();
   });
 });

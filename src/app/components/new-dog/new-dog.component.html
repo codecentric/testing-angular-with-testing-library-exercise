@@ -1,0 +1,15 @@
+<fieldset>
+  <form [formGroup]="dogForm" (ngSubmit)="onSubmit()">
+    <legend>Enter new dog</legend>
+    <label for="name">Name:</label>
+    <input type="text" id="name" formControlName="name" />
+
+    <label for="imgurl">ImgUrl:</label>
+    <input type="text" id="imgurl" formControlName="imageUrl" />
+
+    <label for="bark">Bark:</label>
+    <input type="text" id="bark" formControlName="bark" />
+
+    <button type="submit">submit</button>
+  </form>
+</fieldset>

@@ -28,4 +28,8 @@ export class DogService {
   get getDoggos() {
     return this.dogs;
   }
+
+  add(newDog: Dog) {
+    this.dogs = [...this.dogs, newDog];
+  }
 }

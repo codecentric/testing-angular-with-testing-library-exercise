@@ -32,4 +32,16 @@ describe('DogService', () => {
   it('should give us our dogs', () => {
     expect(service.getDoggos).toEqual(expectedDoggos);
   });
+
+  it('allows us to add a dog', () => {
+    const expectedDog: Dog = {
+      name: 'Beethoven',
+      bark: 'grorororor',
+      imageUrl: 'https://someUrl',
+    };
+
+    service.add(expectedDog);
+
+    expect(service.getDoggos).toEqual([...expectedDoggos, expectedDog]);
+  });
 });
