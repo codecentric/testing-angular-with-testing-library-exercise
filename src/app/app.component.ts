@@ -6,12 +6,4 @@ import { DogService } from './services/dog.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
-  doglist: Dog[] = [];
-
-  constructor(private dogService: DogService) {}
-
-  ngOnInit(): void {
-    this.doglist = this.dogService.getDoggos;
-  }
-}
+export class AppComponent {}

@@ -1,0 +1,7 @@
+<div role="listitem" *ngFor="let dog of doglist">
+  <img alt="Image of {{ dog.name }}" [src]="dog.imageUrl" />
+  <span>{{ dog.name }}</span>
+  <button (click)="onClick(dog)">Bark</button>
+</div>
+
+<p data-testid="dogsays">{{ dogsays }}</p>
